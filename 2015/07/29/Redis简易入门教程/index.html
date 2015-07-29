@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>吴彦欣</title>
+  <title>Redis简易入门教程 | 吴彦欣</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Redis入门简介Remote Dictionary Server (Redis)Redis是一个开源的高性能键值对数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，并借助许多高层级的接口使其可以胜任如缓存、队列系统等不同的角色。  
+  <meta name="description" content="简介Remote Dictionary Server (Redis)Redis是一个开源的高性能键值对数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，并借助许多高层级的接口使其可以胜任如缓存、队列系统等不同的角色。  
 它跟memcached类似，不过数据可以持久化，而且支持的数据类型很丰富。
-截止到2015年6月27日，发布的最新稳定版本是3.0.2。3.0版本最大的">
+截止到2015年6月27日，发布的最新稳定版本是3.0.2。3.0版本最大的提升就是red">
 <meta property="og:type" content="article">
-<meta property="og:title" content="吴彦欣">
-<meta property="og:url" content="http://wuyanxin.com/2015/07/27/Redis简易入门教程/index.html">
+<meta property="og:title" content="Redis简易入门教程">
+<meta property="og:url" content="http://wuyanxin.com/2015/07/29/Redis简易入门教程/index.html">
 <meta property="og:site_name" content="吴彦欣">
-<meta property="og:description" content="Redis入门简介Remote Dictionary Server (Redis)Redis是一个开源的高性能键值对数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，并借助许多高层级的接口使其可以胜任如缓存、队列系统等不同的角色。  
+<meta property="og:description" content="简介Remote Dictionary Server (Redis)Redis是一个开源的高性能键值对数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，并借助许多高层级的接口使其可以胜任如缓存、队列系统等不同的角色。  
 它跟memcached类似，不过数据可以持久化，而且支持的数据类型很丰富。
-截止到2015年6月27日，发布的最新稳定版本是3.0.2。3.0版本最大的">
-<meta property="og:updated_time" content="2015-07-27T09:37:46.000Z">
+截止到2015年6月27日，发布的最新稳定版本是3.0.2。3.0版本最大的提升就是red">
+<meta property="og:updated_time" content="2015-07-29T04:03:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="吴彦欣">
-<meta name="twitter:description" content="Redis入门简介Remote Dictionary Server (Redis)Redis是一个开源的高性能键值对数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，并借助许多高层级的接口使其可以胜任如缓存、队列系统等不同的角色。  
+<meta name="twitter:title" content="Redis简易入门教程">
+<meta name="twitter:description" content="简介Remote Dictionary Server (Redis)Redis是一个开源的高性能键值对数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，并借助许多高层级的接口使其可以胜任如缓存、队列系统等不同的角色。  
 它跟memcached类似，不过数据可以持久化，而且支持的数据类型很丰富。
-截止到2015年6月27日，发布的最新稳定版本是3.0.2。3.0版本最大的">
+截止到2015年6月27日，发布的最新稳定版本是3.0.2。3.0版本最大的提升就是red">
   
     <link rel="alternative" href="/atom.xml" title="吴彦欣" type="application/atom+xml">
   
@@ -68,17 +68,27 @@
       <div class="outer">
         <section id="main"><article id="post-Redis简易入门教程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/07/27/Redis简易入门教程/" class="article-date">
-  <time datetime="2015-07-27T09:37:46.000Z" itemprop="datePublished">2015-07-27</time>
+    <a href="/2015/07/29/Redis简易入门教程/" class="article-date">
+  <time datetime="2015-07-29T04:03:19.000Z" itemprop="datePublished">2015-07-29</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis简易入门教程
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Redis入门">Redis入门</h1><h3 id="简介">简介</h3><p>Remote Dictionary Server (Redis)<br>Redis是一个开源的高性能键值对数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，并借助许多高层级的接口使其可以胜任如缓存、队列系统等不同的角色。  </p>
+        <h3 id="简介">简介</h3><p>Remote Dictionary Server (Redis)<br>Redis是一个开源的高性能键值对数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，并借助许多高层级的接口使其可以胜任如缓存、队列系统等不同的角色。  </p>
 <p>它跟memcached类似，不过数据可以持久化，而且支持的数据类型很丰富。</p>
 <p>截止到2015年6月27日，发布的最新稳定版本是3.0.2。<br>3.0版本最大的提升就是redis集群，一个分布式的redis示例具有数据自动分片和高容错性，以及在高负载的情况下的速度提升。</p>
 <h3 id="安装、配置">安装、配置</h3><h4 id="安装">安装</h4><p>下载路径： <a href="http://redis.io/download" target="_blank" rel="external">http://redis.io/download</a></p>
@@ -437,7 +447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wuyanxin.com/2015/07/27/Redis简易入门教程/" data-id="cicmr2m010000vfmy2gk2okp0" class="article-share-link">Share</a>
+      <a data-url="http://wuyanxin.com/2015/07/29/Redis简易入门教程/" data-id="cico8zvs20000mdmy2eg3yg62" class="article-share-link">Share</a>
       
       
     </footer>
@@ -483,7 +493,7 @@
       <ul>
         
           <li>
-            <a href="/2015/07/27/Redis简易入门教程/">(no title)</a>
+            <a href="/2015/07/29/Redis简易入门教程/">Redis简易入门教程</a>
           </li>
         
           <li>
