@@ -61,6 +61,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-javascript实现快速排序算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/30/javascript实现快速排序算法.html" class="article-date">
+  <time datetime="2015-07-30T09:49:02.000Z" itemprop="datePublished">2015-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/30/javascript实现快速排序算法.html">javascript实现快速排序算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>忘记了快速排序的思路是怎样的了，复习一下，写了两个实例，发表博文备忘。</p>
+<p><strong>对于快速排序的思想，可以参考<a href="http://blog.csdn.net/morewindows/article/details/6684558" target="_blank" rel="external">白话经典算法系列之六 快速排序 快速搞定</a>，讲得比较通俗</strong></p>
+<h3 id="prototype扩展的方式">prototype扩展的方式</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 对<span class="type">Array</span>对象的原型扩展来实现快速排序</span><br><span class="line"> * @param [left]  排序开始位置</span><br><span class="line"> * @param [right]  排序结束位置</span><br><span class="line"> * @returns &#123;<span class="type">Array</span>&#125;</span><br><span class="line"> */</span><br><span class="line"><span class="type">Array</span>.prototype.quickSort = function(left, right)&#123;</span><br><span class="line">    <span class="keyword">if</span>(left === undefined)   left = <span class="number">0</span>;      //若left和right为空，设置初始值</span><br><span class="line">    <span class="keyword">if</span>(right === undefined)   right = this.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="keyword">ref</span> = this[left];</span><br><span class="line">        <span class="keyword">var</span> low = left;</span><br><span class="line">        <span class="keyword">var</span> high = right;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">            //从右往左查询比<span class="keyword">ref</span>小的值</span><br><span class="line">            <span class="keyword">while</span>(low &lt; high &amp;&amp; this[high] &gt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">                --high;</span><br><span class="line">            &#125;</span><br><span class="line">            this[low] = this[high];</span><br><span class="line">            //从左往右查询比<span class="keyword">ref</span>大的值</span><br><span class="line">            <span class="keyword">while</span>(low &lt; high &amp;&amp; this[low] &lt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">                ++low</span><br><span class="line">            &#125;</span><br><span class="line">            this[high] = this[low];</span><br><span class="line">        &#125;</span><br><span class="line">        this[low] = <span class="keyword">ref</span>;</span><br><span class="line">        this.quickSort(low+<span class="number">1</span>, right);</span><br><span class="line">        this.quickSort(left, low-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> this;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">95</span>,<span class="number">8</span>,<span class="number">65</span>,<span class="number">98</span>,<span class="number">54</span>,<span class="number">25</span>,<span class="number">3</span>,<span class="number">654</span>,<span class="number">4</span>,<span class="number">74</span>,<span class="number">63</span>,<span class="number">88</span>,<span class="number">35</span>,<span class="number">68</span>];</span><br><span class="line">console.log(arr1.quickSort());</span><br></pre></td></tr></table></figure>
+<h3 id="非prototype方式">非prototype方式</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param <span class="type">array</span> //要排序的数组</span><br><span class="line"> * @returns &#123;<span class="type">Array</span>&#125; //排完序的数组</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">var</span> quicksort = function(<span class="type">array</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="type">array</span>.length)   <span class="keyword">return</span> <span class="type">array</span>;</span><br><span class="line">    <span class="keyword">var</span> low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> high = <span class="type">array</span>.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">ref</span> = <span class="type">array</span>[low];</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; <span class="type">array</span>[high] &gt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">            --high;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">array</span>[low] = <span class="type">array</span>[high];</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; <span class="type">array</span>[low] &lt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">            ++low</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">array</span>[high] = <span class="type">array</span>[low];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">array</span>[low] = <span class="keyword">ref</span>;</span><br><span class="line">    <span class="keyword">return</span> quicksort(<span class="type">array</span>.slice(<span class="number">0</span>,low)).concat([<span class="keyword">ref</span>],quicksort(<span class="type">array</span>.slice(low+<span class="number">1</span>, <span class="type">array</span>.length)));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">95</span>,<span class="number">8</span>,<span class="number">65</span>,<span class="number">98</span>,<span class="number">54</span>,<span class="number">25</span>,<span class="number">3</span>,<span class="number">654</span>,<span class="number">4</span>,<span class="number">74</span>,<span class="number">63</span>,<span class="number">88</span>,<span class="number">35</span>,<span class="number">68</span>];</span><br><span class="line">console.log(quicksort(arr2));</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wuyanxin.com/2015/07/30/javascript实现快速排序算法.html" data-id="cicq0sl1g00009pmybspk6mrb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Redis简易入门教程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/07/28/Redis简易入门教程.html" class="article-date">
@@ -442,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wuyanxin.com/2015/07/28/Redis简易入门教程.html" data-id="cico9x8910000rpmyhktkj3zl" class="article-share-link">Share</a>
+      <a data-url="http://wuyanxin.com/2015/07/28/Redis简易入门教程.html" data-id="cicq0sl2d00029pmyofmccpa1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -487,7 +526,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wuyanxin.com/2015/07/27/hello-world.html" data-id="cico9x89p0001rpmyf1orovip" class="article-share-link">Share</a>
+      <a data-url="http://wuyanxin.com/2015/07/27/hello-world.html" data-id="cicq0sl2600019pmybxyfyl4l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -512,7 +551,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -522,6 +561,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/07/30/javascript实现快速排序算法.html">javascript实现快速排序算法</a>
+          </li>
         
           <li>
             <a href="/2015/07/28/Redis简易入门教程.html">Redis简易入门教程</a>
