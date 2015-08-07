@@ -61,6 +61,103 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-node-js中使用imagemagick进行图片裁剪压缩" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html" class="article-date">
+  <time datetime="2015-08-07T09:45:47.000Z" itemprop="datePublished">2015-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html">node.js中使用imagemagick进行图片裁剪压缩</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>安装imagemagick</p>
+<pre><code>sudo apt-<span class="keyword">get</span> install imagemagick
+</code></pre><p> or</p>
+<pre><code>wget http:<span class="comment">//www.imagemagick.org/download/ImageMagick.tar.gz</span>
+tar zxvf ImageMagick<span class="class">.tar</span><span class="class">.gz</span>
+cd ImageMagick
+./configure --prefix=/usr/local
+make
+sudo make install
+</code></pre></li>
+<li><p>安装GraphicsMagick for node <a href="http://aheckmann.github.com/gm/" target="_blank" rel="external">http://aheckmann.github.com/gm/</a></p>
+<pre><code>npm <span class="keyword">install</span> gm
+</code></pre></li>
+</ol>
+<ol>
+<li><p>node.js代码</p>
+<pre><code><span class="keyword">var</span> fs, gm;
+gm = <span class="built_in">require</span>(<span class="string">'gm'</span>);
+
+gm(<span class="string">'./img/before.jpg'</span>).options({
+  imageMagick: <span class="literal">true</span>
+}).resize(<span class="number">130</span>, <span class="number">105</span>).write(<span class="string">'./img/after.jpg'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>{
+  <span class="keyword">if</span> (err) {
+    <span class="keyword">return</span> <span class="built_in">console</span>.error(err);
+  }
+  <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'success'</span>);
+});
+</code></pre><p> 使用文件流：</p>
+<pre><code>var fs, gm;
+gm = require<span class="params">('gm')</span>;
+fs = require<span class="params">('fs')</span>;
+
+gm<span class="params">(fs.createReadStream<span class="params">('./img/before.jpg')</span>)</span>.options<span class="params">({
+  imageMagick: <span class="literal">true</span>
+})</span>.<span class="built_in">resize</span><span class="params">(<span class="number">130</span>, <span class="number">105</span>)</span>.stream<span class="params">()</span>.pipe<span class="params">(fs.createWriteStream<span class="params">('./img/after.jpg')</span>)</span>;
+</code></pre><p> 处理网上图片：</p>
+<pre><code>var fs, gm, request;
+gm = require<span class="params">('gm')</span>;
+fs = require<span class="params">('fs')</span>;
+request = require<span class="params">('request')</span>;
+
+gm<span class="params">(request<span class="params">('http://url_to_img.jpg')</span>)</span>.options<span class="params">({
+  imageMagick: <span class="literal">true</span>
+})</span>.<span class="built_in">resize</span><span class="params">(<span class="number">130</span>, <span class="number">105</span>)</span>.stream<span class="params">()</span>.pipe<span class="params">(fs.createWriteStream<span class="params">('./img/after.jpg')</span>)</span>;
+</code></pre></li>
+</ol>
+<h4 id="错误处理">错误处理</h4><ol>
+<li><p>如出现以下错误，请参考：<a href="http://www.xgezhang.com/imagemagick_convert_problem.html" target="_blank" rel="external">http://www.xgezhang.com/imagemagick_convert_problem.html</a></p>
+<p> convert: no decode delegate for this image format <code>JPEG&#39; @ error/constitute.c/ReadImage/501.
+ convert: no images defined</code>img/after.jpg’ @ error/convert.c/ConvertImageCommand/3212.</p>
+</li>
+</ol>
+<ol>
+<li><p>如果configure提示“configure: error: libltdl is required for modules build”，则yum search ltdl，然后（以CentOS 6.3 64bit 为例）</p>
+<pre><code>yum <span class="keyword">install</span> libtool-ltdl.x86_64
+yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
+</code></pre></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wuyanxin.com/2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html" data-id="cid1g84yr0000aumygzpn2erl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-javascript实现快速排序算法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/07/30/javascript实现快速排序算法.html" class="article-date">
@@ -94,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wuyanxin.com/2015/07/30/javascript实现快速排序算法.html" data-id="cicq0sl1g00009pmybspk6mrb" class="article-share-link">Share</a>
+      <a data-url="http://wuyanxin.com/2015/07/30/javascript实现快速排序算法.html" data-id="cid1g84ze0003aumyvgm6g6hf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
@@ -487,7 +584,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wuyanxin.com/2015/07/28/Redis简易入门教程.html" data-id="cicq0sl2d00029pmyofmccpa1" class="article-share-link">Share</a>
+      <a data-url="http://wuyanxin.com/2015/07/28/Redis简易入门教程.html" data-id="cid1g84zo000daumyj570k49t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -532,7 +629,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wuyanxin.com/2015/07/27/hello-world.html" data-id="cicq0sl2600019pmybxyfyl4l" class="article-share-link">Share</a>
+      <a data-url="http://wuyanxin.com/2015/07/27/hello-world.html" data-id="cid1g84zn000caumytkkvyp7t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -560,7 +657,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -569,7 +666,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+      <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
     </div>
   </div>
 
@@ -578,7 +675,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -588,6 +685,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html">node.js中使用imagemagick进行图片裁剪压缩</a>
+          </li>
         
           <li>
             <a href="/2015/07/30/javascript实现快速排序算法.html">javascript实现快速排序算法</a>
