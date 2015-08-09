@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="node.js," />
+  <meta name="keywords" content="js,算法," />
 
 
 
@@ -35,40 +35,22 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="安装imagemagick
-sudo apt-get install imagemagick
- or
-wget http://www.imagemagick.org/download/ImageMagick.tar.gz
-tar zxvf ImageMagick.tar.gz
-cd ImageMagick
-./configure --prefix=/usr/local
-make
-sudo make">
+<meta name="description" content="忘记了快速排序的思路是怎样的了，复习一下，写了两个实例，发表博文备忘。
+对于快速排序的思想，可以参考白话经典算法系列之六 快速排序 快速搞定，讲得比较通俗
+prototype扩展的方式12345678910111213141516171819202122232425262728293031323334/** * 对Array对象的原型扩展来实现快速排序 * @param [left]  排序开始位">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node.js中使用imagemagick进行图片裁剪压缩">
-<meta property="og:url" content="http://wuyanxin.com/2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html">
+<meta property="og:title" content="javascript实现快速排序算法">
+<meta property="og:url" content="http://wuyanxin.com/js_quick_sort.html">
 <meta property="og:site_name" content="吴彦欣">
-<meta property="og:description" content="安装imagemagick
-sudo apt-get install imagemagick
- or
-wget http://www.imagemagick.org/download/ImageMagick.tar.gz
-tar zxvf ImageMagick.tar.gz
-cd ImageMagick
-./configure --prefix=/usr/local
-make
-sudo make">
-<meta property="og:updated_time" content="2015-08-09T08:29:54.000Z">
+<meta property="og:description" content="忘记了快速排序的思路是怎样的了，复习一下，写了两个实例，发表博文备忘。
+对于快速排序的思想，可以参考白话经典算法系列之六 快速排序 快速搞定，讲得比较通俗
+prototype扩展的方式12345678910111213141516171819202122232425262728293031323334/** * 对Array对象的原型扩展来实现快速排序 * @param [left]  排序开始位">
+<meta property="og:updated_time" content="2015-08-09T08:44:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node.js中使用imagemagick进行图片裁剪压缩">
-<meta name="twitter:description" content="安装imagemagick
-sudo apt-get install imagemagick
- or
-wget http://www.imagemagick.org/download/ImageMagick.tar.gz
-tar zxvf ImageMagick.tar.gz
-cd ImageMagick
-./configure --prefix=/usr/local
-make
-sudo make">
+<meta name="twitter:title" content="javascript实现快速排序算法">
+<meta name="twitter:description" content="忘记了快速排序的思路是怎样的了，复习一下，写了两个实例，发表博文备忘。
+对于快速排序的思想，可以参考白话经典算法系列之六 快速排序 快速搞定，讲得比较通俗
+prototype扩展的方式12345678910111213141516171819202122232425262728293031323334/** * 对Array对象的原型扩展来实现快速排序 * @param [left]  排序开始位">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -78,7 +60,7 @@ sudo make">
   };
 </script>
 
-  <title> node.js中使用imagemagick进行图片裁剪压缩 | 吴彦欣 </title>
+  <title> javascript实现快速排序算法 | 吴彦欣 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -93,6 +75,16 @@ sudo make">
   </div>
 <![endif]-->
   
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?8f3b6d4917a1d8cdec52558a77057dd1";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -177,7 +169,7 @@ sudo make">
           
           
             
-              node.js中使用imagemagick进行图片裁剪压缩
+              javascript实现快速排序算法
             
           
         </h1>
@@ -186,19 +178,46 @@ sudo make">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-08-07T17:45:47+08:00" content="2015-08-07">
-            2015-08-07
+          <time itemprop="dateCreated" datetime="2015-07-30T17:49:02+08:00" content="2015-07-30">
+            2015-07-30
           </time>
         </span>
 
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/js/" itemprop="url" rel="index">
+                  <span itemprop="name">js</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/js/算法/" itemprop="url" rel="index">
+                  <span itemprop="name">算法</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
         
 
         
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html" itemprop="commentsCount"></span>
+              <a href="/js_quick_sort.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="js_quick_sort.html" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -212,63 +231,10 @@ sudo make">
       
 
       
-        <span itemprop="articleBody"><ol>
-<li><p>安装imagemagick</p>
-<pre><code>sudo apt-<span class="keyword">get</span> install imagemagick
-</code></pre><p> or</p>
-<pre><code>wget http:<span class="comment">//www.imagemagick.org/download/ImageMagick.tar.gz</span>
-tar zxvf ImageMagick<span class="class">.tar</span><span class="class">.gz</span>
-cd ImageMagick
-./configure --prefix=/usr/local
-make
-sudo make install
-</code></pre></li>
-<li><p>安装GraphicsMagick for node <a href="http://aheckmann.github.com/gm/" target="_blank" rel="external">http://aheckmann.github.com/gm/</a></p>
-<pre><code>npm <span class="keyword">install</span> gm
-</code></pre></li>
-</ol>
-<ol>
-<li><p>node.js代码</p>
-<pre><code><span class="keyword">var</span> fs, gm;
-gm = <span class="built_in">require</span>(<span class="string">'gm'</span>);
-
-gm(<span class="string">'./img/before.jpg'</span>).options({
-  imageMagick: <span class="literal">true</span>
-}).resize(<span class="number">130</span>, <span class="number">105</span>).write(<span class="string">'./img/after.jpg'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>{
-  <span class="keyword">if</span> (err) {
-    <span class="keyword">return</span> <span class="built_in">console</span>.error(err);
-  }
-  <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'success'</span>);
-});
-</code></pre><p> 使用文件流：</p>
-<pre><code>var fs, gm;
-gm = require<span class="params">('gm')</span>;
-fs = require<span class="params">('fs')</span>;
-
-gm<span class="params">(fs.createReadStream<span class="params">('./img/before.jpg')</span>)</span>.options<span class="params">({
-  imageMagick: <span class="literal">true</span>
-})</span>.<span class="built_in">resize</span><span class="params">(<span class="number">130</span>, <span class="number">105</span>)</span>.stream<span class="params">()</span>.pipe<span class="params">(fs.createWriteStream<span class="params">('./img/after.jpg')</span>)</span>;
-</code></pre><p> 处理网上图片：</p>
-<pre><code>var fs, gm, request;
-gm = require<span class="params">('gm')</span>;
-fs = require<span class="params">('fs')</span>;
-request = require<span class="params">('request')</span>;
-
-gm<span class="params">(request<span class="params">('http://url_to_img.jpg')</span>)</span>.options<span class="params">({
-  imageMagick: <span class="literal">true</span>
-})</span>.<span class="built_in">resize</span><span class="params">(<span class="number">130</span>, <span class="number">105</span>)</span>.stream<span class="params">()</span>.pipe<span class="params">(fs.createWriteStream<span class="params">('./img/after.jpg')</span>)</span>;
-</code></pre></li>
-</ol>
-<h4 id="错误处理">错误处理</h4><ol>
-<li><p>如出现以下错误，请参考：<a href="http://t.cn/R7I5ip3" target="_blank" rel="external">http://t.cn/R7I5ip3</a></p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">convert: <span class="keyword">no</span> <span class="keyword">decode</span> delegate <span class="keyword">for</span> this image <span class="keyword">format</span> <span class="label">`JPEG'</span> @ <span class="keyword">error</span>/constitute.c/ReadImage/501.</span><br><span class="line">convert: <span class="keyword">no</span> images defined `img/after.jpg' @ <span class="keyword">error</span>/convert.c/ConvertImageCommand/3212.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果configure提示“configure: error: libltdl is required for modules build”，则yum search ltdl，然后（以CentOS 6.3 64bit 为例）</p>
-<pre><code>yum <span class="keyword">install</span> libtool-ltdl.x86_64
-yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
-</code></pre></li>
-</ol>
-</span>
+        <span itemprop="articleBody"><p>忘记了快速排序的思路是怎样的了，复习一下，写了两个实例，发表博文备忘。</p>
+<p><strong>对于快速排序的思想，可以参考<a href="http://blog.csdn.net/morewindows/article/details/6684558" target="_blank" rel="external">白话经典算法系列之六 快速排序 快速搞定</a>，讲得比较通俗</strong></p>
+<h3 id="prototype扩展的方式">prototype扩展的方式</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 对<span class="type">Array</span>对象的原型扩展来实现快速排序</span><br><span class="line"> * @param [left]  排序开始位置</span><br><span class="line"> * @param [right]  排序结束位置</span><br><span class="line"> * @returns &#123;<span class="type">Array</span>&#125;</span><br><span class="line"> */</span><br><span class="line"><span class="type">Array</span>.prototype.quickSort = function(left, right)&#123;</span><br><span class="line">    <span class="keyword">if</span>(left === undefined)   left = <span class="number">0</span>;      //若left和right为空，设置初始值</span><br><span class="line">    <span class="keyword">if</span>(right === undefined)   right = this.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="keyword">ref</span> = this[left];</span><br><span class="line">        <span class="keyword">var</span> low = left;</span><br><span class="line">        <span class="keyword">var</span> high = right;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">            //从右往左查询比<span class="keyword">ref</span>小的值</span><br><span class="line">            <span class="keyword">while</span>(low &lt; high &amp;&amp; this[high] &gt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">                --high;</span><br><span class="line">            &#125;</span><br><span class="line">            this[low] = this[high];</span><br><span class="line">            //从左往右查询比<span class="keyword">ref</span>大的值</span><br><span class="line">            <span class="keyword">while</span>(low &lt; high &amp;&amp; this[low] &lt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">                ++low</span><br><span class="line">            &#125;</span><br><span class="line">            this[high] = this[low];</span><br><span class="line">        &#125;</span><br><span class="line">        this[low] = <span class="keyword">ref</span>;</span><br><span class="line">        this.quickSort(low+<span class="number">1</span>, right);</span><br><span class="line">        this.quickSort(left, low-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> this;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">95</span>,<span class="number">8</span>,<span class="number">65</span>,<span class="number">98</span>,<span class="number">54</span>,<span class="number">25</span>,<span class="number">3</span>,<span class="number">654</span>,<span class="number">4</span>,<span class="number">74</span>,<span class="number">63</span>,<span class="number">88</span>,<span class="number">35</span>,<span class="number">68</span>];</span><br><span class="line">console.log(arr1.quickSort());</span><br></pre></td></tr></table></figure>
+<h3 id="非prototype方式">非prototype方式</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param <span class="type">array</span> //要排序的数组</span><br><span class="line"> * @returns &#123;<span class="type">Array</span>&#125; //排完序的数组</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">var</span> quicksort = function(<span class="type">array</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="type">array</span>.length)   <span class="keyword">return</span> <span class="type">array</span>;</span><br><span class="line">    <span class="keyword">var</span> low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> high = <span class="type">array</span>.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">ref</span> = <span class="type">array</span>[low];</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; <span class="type">array</span>[high] &gt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">            --high;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">array</span>[low] = <span class="type">array</span>[high];</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; <span class="type">array</span>[low] &lt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">            ++low</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">array</span>[high] = <span class="type">array</span>[low];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">array</span>[low] = <span class="keyword">ref</span>;</span><br><span class="line">    <span class="keyword">return</span> quicksort(<span class="type">array</span>.slice(<span class="number">0</span>,low)).concat([<span class="keyword">ref</span>],quicksort(<span class="type">array</span>.slice(low+<span class="number">1</span>, <span class="type">array</span>.length)));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">95</span>,<span class="number">8</span>,<span class="number">65</span>,<span class="number">98</span>,<span class="number">54</span>,<span class="number">25</span>,<span class="number">3</span>,<span class="number">654</span>,<span class="number">4</span>,<span class="number">74</span>,<span class="number">63</span>,<span class="number">88</span>,<span class="number">35</span>,<span class="number">68</span>];</span><br><span class="line">console.log(quicksort(arr2));</span><br></pre></td></tr></table></figure></span>
       
     </div>
 
@@ -276,7 +242,9 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
       
         <div class="post-tags">
           
-            <a href="/tags/node-js/" rel="tag">#node.js</a>
+            <a href="/tags/js/" rel="tag">#js</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
           
         </div>
       
@@ -285,11 +253,13 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/node_imagemagick.html" rel="prev">node.js中使用imagemagick进行图片裁剪压缩</a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/30/javascript实现快速排序算法.html" rel="next">javascript实现快速排序算法</a>
+              <a href="/redis_study.html" rel="next">Redis简易入门教程</a>
             
           </div>
         </div>
@@ -314,8 +284,8 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html"
-                   data-title="node.js中使用imagemagick进行图片裁剪压缩" data-url="http://wuyanxin.com/2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html">
+              <div class="ds-thread" data-thread-key="js_quick_sort.html"
+                   data-title="javascript实现快速排序算法" data-url="http://wuyanxin.com/js_quick_sort.html">
               </div>
             
           </div>
@@ -380,6 +350,24 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wuyanxin" target="_blank">github</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/zpup" target="_blank">微博</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/wuyanxin" target="_blank">知乎</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/6f1b27b45dd9" target="_blank">简书</a>
+              </span>
+            
+          
         </div>
 
         
@@ -397,7 +385,7 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#错误处理"><span class="nav-number">1.</span> <span class="nav-text">错误处理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#prototype扩展的方式"><span class="nav-number">1.</span> <span class="nav-text">prototype扩展的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非prototype方式"><span class="nav-number">2.</span> <span class="nav-text">非prototype方式</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
