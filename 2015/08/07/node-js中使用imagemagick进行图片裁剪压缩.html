@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next use-motion ">
+<html class="theme-next use-motion theme-next-mist">
 <head>
   
 
@@ -57,7 +57,7 @@ cd ImageMagick
 ./configure --prefix=/usr/local
 make
 sudo make">
-<meta property="og:updated_time" content="2015-08-07T09:47:10.000Z">
+<meta property="og:updated_time" content="2015-08-09T08:29:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node.js中使用imagemagick进行图片裁剪压缩">
 <meta name="twitter:description" content="安装imagemagick
@@ -73,7 +73,7 @@ sudo make">
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: '',
+    scheme: 'Mist',
     sidebar: 'post'
   };
 </script>
@@ -195,6 +195,13 @@ sudo make">
 
         
           
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
         
       </div>
     </header>
@@ -253,12 +260,9 @@ gm<span class="params">(request<span class="params">('http://url_to_img.jpg')</s
 </code></pre></li>
 </ol>
 <h4 id="错误处理">错误处理</h4><ol>
-<li><p>如出现以下错误，请参考：<a href="http://www.xgezhang.com/imagemagick_convert_problem.html" target="_blank" rel="external">http://www.xgezhang.com/imagemagick_convert_problem.html</a></p>
-<p> convert: no decode delegate for this image format <code>JPEG&#39; @ error/constitute.c/ReadImage/501.
- convert: no images defined</code>img/after.jpg’ @ error/convert.c/ConvertImageCommand/3212.</p>
+<li><p>如出现以下错误，请参考：<a href="http://t.cn/R7I5ip3" target="_blank" rel="external">http://t.cn/R7I5ip3</a></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">convert: <span class="keyword">no</span> <span class="keyword">decode</span> delegate <span class="keyword">for</span> this image <span class="keyword">format</span> <span class="label">`JPEG'</span> @ <span class="keyword">error</span>/constitute.c/ReadImage/501.</span><br><span class="line">convert: <span class="keyword">no</span> images defined `img/after.jpg' @ <span class="keyword">error</span>/convert.c/ConvertImageCommand/3212.</span><br></pre></td></tr></table></figure>
 </li>
-</ol>
-<ol>
 <li><p>如果configure提示“configure: error: libltdl is required for modules build”，则yum search ltdl，然后（以CentOS 6.3 64bit 为例）</p>
 <pre><code>yum <span class="keyword">install</span> libtool-ltdl.x86_64
 yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
@@ -310,6 +314,10 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
         
           <div class="comments" id="comments">
             
+              <div class="ds-thread" data-thread-key="2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html"
+                   data-title="node.js中使用imagemagick进行图片裁剪压缩" data-url="http://wuyanxin.com/2015/08/07/node-js中使用imagemagick进行图片裁剪压缩.html">
+              </div>
+            
           </div>
         
       </div>
@@ -340,7 +348,7 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
 
       <section class="site-overview">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="吴彦欣" itemprop="image"/>
+          <img class="site-author-image" src="/images/ME.jpg" alt="吴彦欣" itemprop="image"/>
           <p class="site-author-name" itemprop="name">吴彦欣</p>
         </div>
         <p class="site-description motion-element" itemprop="description"></p>
@@ -420,7 +428,7 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT
+    NexT.Mist
   </a>
 </div>
 
@@ -437,11 +445,29 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
   
   
     
-    
 
   
+    
+  
 
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"blog_wuyanxin_hexo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
 
+    
   
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
