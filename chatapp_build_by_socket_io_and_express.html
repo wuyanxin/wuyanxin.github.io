@@ -26,7 +26,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="node.js," />
 
 
 
@@ -35,15 +35,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="吴彦欣">
-<meta property="og:url" content="http://wuyanxin.com/index.html">
+<meta name="description" content="socket.io简介Socket.IO是一个开源的WebSocket库，它通过Node.js实现WebSocket服务端，同时也提供客户端JS库。Socket.IO支持以事件为基础的实时双向通讯，它可以工作在任何平台、浏览器或移动设备。Socket.IO支持4种协议：WebSocket、htmlfile、xhr-polling、jsonp-polling，它会自动根据浏览器选择适合的通讯方式，从">
+<meta property="og:type" content="article">
+<meta property="og:title" content="socket.io+express多房间聊天应用">
+<meta property="og:url" content="http://wuyanxin.com/chatapp_build_by_socket_io_and_express.html">
 <meta property="og:site_name" content="吴彦欣">
-<meta property="og:description">
+<meta property="og:description" content="socket.io简介Socket.IO是一个开源的WebSocket库，它通过Node.js实现WebSocket服务端，同时也提供客户端JS库。Socket.IO支持以事件为基础的实时双向通讯，它可以工作在任何平台、浏览器或移动设备。Socket.IO支持4种协议：WebSocket、htmlfile、xhr-polling、jsonp-polling，它会自动根据浏览器选择适合的通讯方式，从">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/436630-d01d00f22a54a6e3.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240">
+<meta property="og:updated_time" content="2015-08-14T10:09:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="吴彦欣">
-<meta name="twitter:description">
+<meta name="twitter:title" content="socket.io+express多房间聊天应用">
+<meta name="twitter:description" content="socket.io简介Socket.IO是一个开源的WebSocket库，它通过Node.js实现WebSocket服务端，同时也提供客户端JS库。Socket.IO支持以事件为基础的实时双向通讯，它可以工作在任何平台、浏览器或移动设备。Socket.IO支持4种协议：WebSocket、htmlfile、xhr-polling、jsonp-polling，它会自动根据浏览器选择适合的通讯方式，从">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -53,7 +55,7 @@
   };
 </script>
 
-  <title> 吴彦欣 </title>
+  <title> socket.io+express多房间聊天应用 | 吴彦欣 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -90,9 +92,7 @@
 
 
 
-  <div class="container one-column 
-   page-home 
-">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -160,9 +160,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div id="content" class="content"> 
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
@@ -173,9 +173,7 @@
           
           
             
-              <a class="post-title-link" href="/chatapp_build_by_socket_io_and_express.html" itemprop="url">
-                socket.io+express多房间聊天应用
-              </a>
+              socket.io+express多房间聊天应用
             
           
         </h1>
@@ -210,8 +208,7 @@
       
 
       
-        
-          <span itemprop="articleBody"><h3 id="socket-io简介">socket.io简介</h3><p>Socket.IO是一个开源的WebSocket库，它通过Node.js实现WebSocket服务端，同时也提供客户端JS库。Socket.IO支持以事件为基础的实时双向通讯，它可以工作在任何平台、浏览器或移动设备。<br>Socket.IO支持4种协议：WebSocket、htmlfile、xhr-polling、jsonp-polling，它会自动根据浏览器选择适合的通讯方式，从而让开发者可以聚焦到功能的实现而不是平台的兼容性，同时Socket.IO具有不错的稳定性和性能。</p>
+        <span itemprop="articleBody"><h3 id="socket-io简介">socket.io简介</h3><p>Socket.IO是一个开源的WebSocket库，它通过Node.js实现WebSocket服务端，同时也提供客户端JS库。Socket.IO支持以事件为基础的实时双向通讯，它可以工作在任何平台、浏览器或移动设备。<br>Socket.IO支持4种协议：WebSocket、htmlfile、xhr-polling、jsonp-polling，它会自动根据浏览器选择适合的通讯方式，从而让开发者可以聚焦到功能的实现而不是平台的兼容性，同时Socket.IO具有不错的稳定性和性能。</p>
 <h3 id="多房间聊天">多房间聊天</h3><p>socket.io提供<a href="http://socket.io/docs/rooms-and-namespaces/" target="_blank" rel="external">rooms和namespace的API</a><br>用rooms的API就可以实现多房间聊天了，总结出来无外乎就是：join/leave room 和 say to room<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// join和leave</span><br><span class="line">io.on('connection', function(socket)&#123;</span><br><span class="line">  socket.join('some <span class="keyword">room</span>');</span><br><span class="line">  // socket.leave('some <span class="keyword">room</span>');</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// <span class="keyword">say</span> to <span class="keyword">room</span></span><br><span class="line">io.to('some <span class="keyword">room</span>').emit('some event'):</span><br><span class="line">io.in('some <span class="keyword">room</span>').emit('some event'):</span><br></pre></td></tr></table></figure></p>
 <h3 id="代码_github">代码 <a href="https://github.com/wuyanxin/chatapp-demo.git" target="_blank" rel="external">github</a></h3><p>新建文件夹chatapp-demo<br><code>chatapp-demo/package.json</code><br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"chatapp-demo"</span></span>,</span><br><span class="line">  "<span class="attribute">version</span>": <span class="value"><span class="string">"1.0.0"</span></span>,</span><br><span class="line">  "<span class="attribute">description</span>": <span class="value"><span class="string">"multi room chat app demo, powered by socket.io"</span></span>,</span><br><span class="line">  "<span class="attribute">main</span>": <span class="value"><span class="string">"app.js"</span></span>,</span><br><span class="line">  "<span class="attribute">dependencies</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">express</span>": <span class="value"><span class="string">"^4.13.3"</span></span>,</span><br><span class="line">    "<span class="attribute">hbs</span>": <span class="value"><span class="string">"^3.1.0"</span></span>,</span><br><span class="line">    "<span class="attribute">path</span>": <span class="value"><span class="string">"^0.11.14"</span></span>,</span><br><span class="line">    "<span class="attribute">socket.io</span>": <span class="value"><span class="string">"^1.3.6"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">devDependencies</span>": <span class="value">&#123;&#125;</span>,</span><br><span class="line">  "<span class="attribute">author</span>": <span class="value"><span class="string">"wuyanxin"</span></span>,</span><br><span class="line">  "<span class="attribute">license</span>": <span class="value"><span class="string">"ISC"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure></p>
 <p>执行 <code>npm install</code></p>
@@ -224,676 +221,56 @@
 </blockquote>
 <h6 id="参考：">参考：</h6><p><a href="http://socket.io/docs/rooms-and-namespaces/" target="_blank" rel="external">http://socket.io/docs/rooms-and-namespaces/</a><br><a href="http://blog.fens.me/nodejs-socketio-chat/" target="_blank" rel="external">http://blog.fens.me/nodejs-socketio-chat/</a><br><a href="http://www.jianshu.com/p/d9b1273a93fd" target="_blank" rel="external">http://www.jianshu.com/p/d9b1273a93fd</a></p>
 </span>
-        
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/node-js/" rel="tag">#node.js</a>
+          
+        </div>
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/node_imagemagick.html" rel="next">node.js中使用imagemagick进行图片裁剪压缩</a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
-      
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/node_imagemagick.html" itemprop="url">
-                node.js中使用imagemagick进行图片裁剪压缩
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-08-07T17:45:47+08:00" content="2015-08-07">
-            2015-08-07
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/node_imagemagick.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="node_imagemagick.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><ol>
-<li><p>安装imagemagick</p>
-<pre><code>sudo apt-<span class="keyword">get</span> install imagemagick
-</code></pre><p> or</p>
-<pre><code>wget http:<span class="comment">//www.imagemagick.org/download/ImageMagick.tar.gz</span>
-tar zxvf ImageMagick<span class="class">.tar</span><span class="class">.gz</span>
-cd ImageMagick
-./configure --prefix=/usr/local
-make
-sudo make install
-</code></pre></li>
-<li><p>安装GraphicsMagick for node <a href="http://aheckmann.github.com/gm/" target="_blank" rel="external">http://aheckmann.github.com/gm/</a></p>
-<pre><code>npm <span class="keyword">install</span> gm
-</code></pre></li>
-</ol>
-<ol>
-<li><p>node.js代码</p>
-<pre><code><span class="keyword">var</span> fs, gm;
-gm = <span class="built_in">require</span>(<span class="string">'gm'</span>);
-
-gm(<span class="string">'./img/before.jpg'</span>).options({
-  imageMagick: <span class="literal">true</span>
-}).resize(<span class="number">130</span>, <span class="number">105</span>).write(<span class="string">'./img/after.jpg'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>{
-  <span class="keyword">if</span> (err) {
-    <span class="keyword">return</span> <span class="built_in">console</span>.error(err);
-  }
-  <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">'success'</span>);
-});
-</code></pre><p> 使用文件流：</p>
-<pre><code>var fs, gm;
-gm = require<span class="params">('gm')</span>;
-fs = require<span class="params">('fs')</span>;
-
-gm<span class="params">(fs.createReadStream<span class="params">('./img/before.jpg')</span>)</span>.options<span class="params">({
-  imageMagick: <span class="literal">true</span>
-})</span>.<span class="built_in">resize</span><span class="params">(<span class="number">130</span>, <span class="number">105</span>)</span>.stream<span class="params">()</span>.pipe<span class="params">(fs.createWriteStream<span class="params">('./img/after.jpg')</span>)</span>;
-</code></pre><p> 处理网上图片：</p>
-<pre><code>var fs, gm, request;
-gm = require<span class="params">('gm')</span>;
-fs = require<span class="params">('fs')</span>;
-request = require<span class="params">('request')</span>;
-
-gm<span class="params">(request<span class="params">('http://url_to_img.jpg')</span>)</span>.options<span class="params">({
-  imageMagick: <span class="literal">true</span>
-})</span>.<span class="built_in">resize</span><span class="params">(<span class="number">130</span>, <span class="number">105</span>)</span>.stream<span class="params">()</span>.pipe<span class="params">(fs.createWriteStream<span class="params">('./img/after.jpg')</span>)</span>;
-</code></pre></li>
-</ol>
-<h4 id="错误处理">错误处理</h4><ol>
-<li><p>如出现以下错误，请参考：<a href="http://t.cn/R7I5ip3" target="_blank" rel="external">http://t.cn/R7I5ip3</a></p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">convert: <span class="keyword">no</span> <span class="keyword">decode</span> delegate <span class="keyword">for</span> this image <span class="keyword">format</span> <span class="label">`JPEG'</span> @ <span class="keyword">error</span>/constitute.c/ReadImage/501.</span><br><span class="line">convert: <span class="keyword">no</span> images defined `img/after.jpg' @ <span class="keyword">error</span>/convert.c/ConvertImageCommand/3212.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果configure提示“configure: error: libltdl is required for modules build”，则yum search ltdl，然后（以CentOS 6.3 64bit 为例）</p>
-<pre><code>yum <span class="keyword">install</span> libtool-ltdl.x86_64
-yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
-</code></pre></li>
-</ol>
-</span>
-        
+    <div class="post-spread">
       
     </div>
+  </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/js_quick_sort.html" itemprop="url">
-                javascript实现快速排序算法
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-07-30T17:49:02+08:00" content="2015-07-30">
-            2015-07-30
-          </time>
-        </span>
-
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/js/" itemprop="url" rel="index">
-                  <span itemprop="name">js</span>
-                </a>
-              </span>
-
-              
-              
-                ， 
-              
-
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/js/算法/" itemprop="url" rel="index">
-                  <span itemprop="name">算法</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/js_quick_sort.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="js_quick_sort.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>忘记了快速排序的思路是怎样的了，复习一下，写了两个实例，发表博文备忘。</p>
-<p><strong>对于快速排序的思想，可以参考<a href="http://blog.csdn.net/morewindows/article/details/6684558" target="_blank" rel="external">白话经典算法系列之六 快速排序 快速搞定</a>，讲得比较通俗</strong></p>
-<h3 id="prototype扩展的方式">prototype扩展的方式</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 对<span class="type">Array</span>对象的原型扩展来实现快速排序</span><br><span class="line"> * @param [left]  排序开始位置</span><br><span class="line"> * @param [right]  排序结束位置</span><br><span class="line"> * @returns &#123;<span class="type">Array</span>&#125;</span><br><span class="line"> */</span><br><span class="line"><span class="type">Array</span>.prototype.quickSort = function(left, right)&#123;</span><br><span class="line">    <span class="keyword">if</span>(left === undefined)   left = <span class="number">0</span>;      //若left和right为空，设置初始值</span><br><span class="line">    <span class="keyword">if</span>(right === undefined)   right = this.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="keyword">ref</span> = this[left];</span><br><span class="line">        <span class="keyword">var</span> low = left;</span><br><span class="line">        <span class="keyword">var</span> high = right;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">            //从右往左查询比<span class="keyword">ref</span>小的值</span><br><span class="line">            <span class="keyword">while</span>(low &lt; high &amp;&amp; this[high] &gt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">                --high;</span><br><span class="line">            &#125;</span><br><span class="line">            this[low] = this[high];</span><br><span class="line">            //从左往右查询比<span class="keyword">ref</span>大的值</span><br><span class="line">            <span class="keyword">while</span>(low &lt; high &amp;&amp; this[low] &lt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">                ++low</span><br><span class="line">            &#125;</span><br><span class="line">            this[high] = this[low];</span><br><span class="line">        &#125;</span><br><span class="line">        this[low] = <span class="keyword">ref</span>;</span><br><span class="line">        this.quickSort(low+<span class="number">1</span>, right);</span><br><span class="line">        this.quickSort(left, low-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> this;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">95</span>,<span class="number">8</span>,<span class="number">65</span>,<span class="number">98</span>,<span class="number">54</span>,<span class="number">25</span>,<span class="number">3</span>,<span class="number">654</span>,<span class="number">4</span>,<span class="number">74</span>,<span class="number">63</span>,<span class="number">88</span>,<span class="number">35</span>,<span class="number">68</span>];</span><br><span class="line">console.log(arr1.quickSort());</span><br></pre></td></tr></table></figure>
-<h3 id="非prototype方式">非prototype方式</h3><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param <span class="type">array</span> //要排序的数组</span><br><span class="line"> * @returns &#123;<span class="type">Array</span>&#125; //排完序的数组</span><br><span class="line"> */</span><br><span class="line"><span class="keyword">var</span> quicksort = function(<span class="type">array</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!<span class="type">array</span>.length)   <span class="keyword">return</span> <span class="type">array</span>;</span><br><span class="line">    <span class="keyword">var</span> low = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> high = <span class="type">array</span>.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> <span class="keyword">ref</span> = <span class="type">array</span>[low];</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high)&#123;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; <span class="type">array</span>[high] &gt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">            --high;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">array</span>[low] = <span class="type">array</span>[high];</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; <span class="type">array</span>[low] &lt; <span class="keyword">ref</span>)&#123;</span><br><span class="line">            ++low</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">array</span>[high] = <span class="type">array</span>[low];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">array</span>[low] = <span class="keyword">ref</span>;</span><br><span class="line">    <span class="keyword">return</span> quicksort(<span class="type">array</span>.slice(<span class="number">0</span>,low)).concat([<span class="keyword">ref</span>],quicksort(<span class="type">array</span>.slice(low+<span class="number">1</span>, <span class="type">array</span>.length)));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">95</span>,<span class="number">8</span>,<span class="number">65</span>,<span class="number">98</span>,<span class="number">54</span>,<span class="number">25</span>,<span class="number">3</span>,<span class="number">654</span>,<span class="number">4</span>,<span class="number">74</span>,<span class="number">63</span>,<span class="number">88</span>,<span class="number">35</span>,<span class="number">68</span>];</span><br><span class="line">console.log(quicksort(arr2));</span><br></pre></td></tr></table></figure></span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/redis_study.html" itemprop="url">
-                Redis简易入门教程
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-07-28T00:00:00+08:00" content="2015-07-28">
-            2015-07-28
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/redis_study.html#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="redis_study.html" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><h3 id="简介">简介</h3><p>Remote Dictionary Server (Redis)<br>Redis是一个开源的高性能键值对数据库。它通过提供多种键值数据类型来适应不同场景下的存储需求，并借助许多高层级的接口使其可以胜任如缓存、队列系统等不同的角色。  </p>
-<p>它跟memcached类似，不过数据可以持久化，而且支持的数据类型很丰富。</p>
-<p>截止到2015年6月27日，发布的最新稳定版本是3.0.2。<br>3.0版本最大的提升就是redis集群，一个分布式的redis示例具有数据自动分片和高容错性，以及在高负载的情况下的速度提升。</p>
-<h3 id="安装、配置">安装、配置</h3><h4 id="安装">安装</h4><p>下载路径： <a href="http://redis.io/download" target="_blank" rel="external">http://redis.io/download</a></p>
-<figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">安装命令</span><br><span class="line"><span class="char">$ </span>wget <span class="method">http:</span>//download.redis.io/releases/redis-<span class="number">3.0</span>.2.tar.gz</span><br><span class="line"><span class="char">$ </span>tar xzf redis-<span class="number">3.0</span>.2.tar.gz</span><br><span class="line"><span class="char">$ </span>cd redis-<span class="number">3.0</span>.2</span><br><span class="line"><span class="char">$ </span>make</span><br><span class="line"></span><br><span class="line">启动</span><br><span class="line"><span class="char">$ </span>src/redis-server</span><br><span class="line"></span><br><span class="line">客户端</span><br><span class="line"><span class="char">$ </span>src/redis-cli</span><br><span class="line">redis&gt; set foo bar</span><br><span class="line"><span class="class">OK</span></span><br><span class="line">redis&gt; get foo</span><br><span class="line"><span class="comment">"bar"</span></span><br></pre></td></tr></table></figure>
-<h4 id="配置">配置</h4><p>redis的配置示例文件在%REDIS_HOME%下的redis.conf<br>里面包含很多默认配置<br>使用配置可以这样：$ redis-server /etc/redis/6379.conf</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">daemonize 如果需要在后台运行，把该项改为yes</span><br><span class="line"></span><br><span class="line">pidfile 配置多个pid的地址，默认在/var/run/redis.pid</span><br><span class="line"></span><br><span class="line">bind 绑定ip，设置后只接受自该ip的请求</span><br><span class="line"></span><br><span class="line">port 监听端口，默认为<span class="number">6379</span></span><br><span class="line"></span><br><span class="line">timeout 设置客户端连接时的超时时间，单位为秒</span><br><span class="line"></span><br><span class="line">loglevel 分为<span class="number">4</span>级，<span class="keyword">debug</span>、<span class="keyword">verbose</span>、notice、warning</span><br><span class="line"></span><br><span class="line">logfile 配置<span class="built_in">log</span>文件地址</span><br><span class="line"></span><br><span class="line">databases 设置数据库的个数，默认使用的数据库为<span class="number">0</span></span><br><span class="line"></span><br><span class="line">save &lt;seconds&gt; &lt;<span class="keyword">changes</span>&gt; 设置redis进行数据库镜像的频率，保存快照的频率。  </span><br><span class="line">	第一个参数表示多长时间，第二个表示执行多少次写操作。</span><br><span class="line">	在一定时间内执行一定数量的写操作时，自动保存快照。可设置多个条件。</span><br><span class="line"></span><br><span class="line">rdbcompression 在进行镜像备份时，是否进行压缩</span><br><span class="line"></span><br><span class="line">Dbfilename 镜像备份文件的文件名</span><br><span class="line"></span><br><span class="line">Dir 数据库镜像备份的文件放置路径</span><br><span class="line"></span><br><span class="line">Slaveof 设置数据库为其他数据库的从数据库 </span><br><span class="line"></span><br><span class="line">Masterauth 主数据库连接需要的密码验证</span><br><span class="line"></span><br><span class="line">Requirepass 设置登录时需要使用的密码</span><br><span class="line"></span><br><span class="line">Maxclients 限制同时连接的客户数量</span><br><span class="line"></span><br><span class="line">Maxmemory 设置redis能够使用的最大内存</span><br><span class="line"></span><br><span class="line">Appendonly 开启<span class="built_in">append</span> <span class="keyword">only</span>模式</span><br><span class="line"></span><br><span class="line">appendfsync 设置对appendonly.aof文件同步的频率</span><br><span class="line"></span><br><span class="line"><span class="keyword">vm</span>-enabled 是否虚拟内存的支持</span><br><span class="line"></span><br><span class="line"><span class="keyword">vm</span>-swap-<span class="keyword">file</span> 设置虚拟内存的交换文件路径</span><br><span class="line"></span><br><span class="line"><span class="keyword">vm</span>-<span class="built_in">max</span>-memory 设置redis使用的最大物理内存大小</span><br><span class="line"></span><br><span class="line"><span class="keyword">vm</span>-page-size 设置虚拟内存的页大小</span><br><span class="line"></span><br><span class="line"><span class="keyword">vm</span>-pages 设置交换文件的总page数量</span><br><span class="line"></span><br><span class="line"><span class="keyword">vm</span>-<span class="built_in">max</span>-threads 设置VMIO同时使用的线程数量</span><br><span class="line"></span><br><span class="line">glueoutputbuf 把小的输出缓存存放在一起</span><br><span class="line"></span><br><span class="line">hash-<span class="built_in">max</span>-zipmap-entries 设置hash的临界值</span><br><span class="line"></span><br><span class="line">activerehashing 重新hash</span><br></pre></td></tr></table></figure>
-<p>详情可参考：<a href="http://t.cn/8kr3HUw" target="_blank" rel="external">http://t.cn/8kr3HUw</a></p>
-<h3 id="数据结构及其使用场景">数据结构及其使用场景</h3><p>1 string 字符类型<br>2 hash 散列类型<br>3 list 列表类型<br>4 set 集合类型<br>5 sorted set 有序集合</p>
-<h4 id="string_字符串类型">string 字符串类型</h4><p>字符串类型是redis最基础的数据类型，是其他4中数据类型的基础。  </p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">命令</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">SET key value</td>
-<td style="text-align:left">赋值</td>
-<td style="text-align:left">set foo 5 ==&gt; OK</td>
-</tr>
-<tr>
-<td style="text-align:left">GET key</td>
-<td style="text-align:left">取值</td>
-<td style="text-align:left">get foo ==&gt; “5”</td>
-</tr>
-<tr>
-<td style="text-align:left">INCR key</td>
-<td style="text-align:left">递增.键不存在时创建并赋0，否则+1</td>
-<td style="text-align:left">incr foo ==&gt; 6</td>
-</tr>
-<tr>
-<td style="text-align:left">DECR key</td>
-<td style="text-align:left">递减</td>
-<td style="text-align:left">decr foo ==&gt; 5</td>
-</tr>
-<tr>
-<td style="text-align:left">INCRBY key num</td>
-<td style="text-align:left">与incr一样，不过可以指定增加的数值</td>
-<td style="text-align:left">incrby foo 5 ==&gt; 10</td>
-</tr>
-<tr>
-<td style="text-align:left">APPEND key value</td>
-<td style="text-align:left">追加,返回追加后字符串长度</td>
-<td style="text-align:left">append foo 24 ==&gt; 4</td>
-</tr>
-<tr>
-<td style="text-align:left">STRLEN key</td>
-<td style="text-align:left">长度</td>
-<td style="text-align:left">strlen foo ==&gt; 4</td>
-</tr>
-<tr>
-<td style="text-align:left">MSET key value[ key value…]</td>
-<td style="text-align:left">同时设置多个键值</td>
-<td style="text-align:left">mset key1 1 key2 2 ==&gt; OK</td>
-</tr>
-<tr>
-<td style="text-align:left">MGET key[ key…]</td>
-<td style="text-align:left">同时获取多个键值</td>
-<td style="text-align:left">mget key1 key2 ==&gt;”1” “2”</td>
-</tr>
-</tbody>
-</table>
-<p>字符串就介绍到这里了，还有其他命令请自行看<a href="http://redis.io/commands" target="_blank" rel="external">官方文档</a> 😂😂😂</p>
-<h3 id="hash_散列类型">hash 散列类型</h3><p>散列类型是一个键值数据结构，其值只能是字符串，也就是散列数据类型不支持嵌套其他数据类型。  </p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">命令</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">HSET key field value</td>
-<td style="text-align:left">设置或修改字段值</td>
-<td style="text-align:left">hset user name frek ==&gt; 1</td>
-</tr>
-<tr>
-<td style="text-align:left">HGET key field</td>
-<td style="text-align:left">获取字段值</td>
-<td style="text-align:left">hget user name ==&gt; “frek”</td>
-</tr>
-<tr>
-<td style="text-align:left">HMSET key field value[ field value..]</td>
-<td style="text-align:left">同时设置多个字段</td>
-<td style="text-align:left">hmset user name frek age 18 ==&gt; OK</td>
-</tr>
-<tr>
-<td style="text-align:left">HMGET key field[ field..]</td>
-<td style="text-align:left">同时获取多个字段值</td>
-<td style="text-align:left">hmget user name age ==&gt; “frek” “18”</td>
-</tr>
-<tr>
-<td style="text-align:left">HGETALL key</td>
-<td style="text-align:left">获取键中所有字段和值</td>
-<td style="text-align:left">hgetall user ==&gt; “name” “frek” “age” “18”</td>
-</tr>
-<tr>
-<td style="text-align:left">HEXISTS key field</td>
-<td style="text-align:left">判断字段是否存在，存在返回1，否则返回0（如果键不存在也返回0）</td>
-<td style="text-align:left">hexists user email ==&gt; 0</td>
-</tr>
-<tr>
-<td style="text-align:left">HSETNX key field value</td>
-<td style="text-align:left">当字段不存在时赋值</td>
-<td style="text-align:left">hsetnx user name sam ==&gt; 0 ; HSETNX user email xxx@xxx.com ==&gt; 1</td>
-</tr>
-<tr>
-<td style="text-align:left">HINCRBY key field increment</td>
-<td style="text-align:left">参考incrby命令</td>
-<td style="text-align:left">hincrby user age 1 ==&gt; 19</td>
-</tr>
-<tr>
-<td style="text-align:left">HKEYS key</td>
-<td style="text-align:left">获取键中所有字段名</td>
-<td style="text-align:left">hkeys user ==&gt; “name” “age” “email”</td>
-</tr>
-<tr>
-<td style="text-align:left">HVALS key</td>
-<td style="text-align:left">获取所有的字段值</td>
-<td style="text-align:left">hvals user ==&gt; “frek” “19” “xxx@xxx.com”</td>
-</tr>
-<tr>
-<td style="text-align:left">HLEN key</td>
-<td style="text-align:left">获取字段数量</td>
-<td style="text-align:left">hlen user ==&gt; 3</td>
-</tr>
-<tr>
-<td style="text-align:left">HDEL key field[ field..]</td>
-<td style="text-align:left">删除一个或多个字段,返回删除的字段数</td>
-<td style="text-align:left">hdel user email age ==&gt; 2</td>
-</tr>
-</tbody>
-</table>
-<h3 id="list_列表类型">list 列表类型</h3><p>列表类型可以存储一个有序的字符串列表</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">命令</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">LPUSH key value[ value..]</td>
-<td style="text-align:left">向列表的左边增加元素，返回增加元素后列表的长度</td>
-<td style="text-align:left">lpush users fred sam alice ==&gt; 3</td>
-</tr>
-<tr>
-<td style="text-align:left">RPUSH key value[ value..]</td>
-<td style="text-align:left">向列表的右边增加元素</td>
-<td style="text-align:left">rpush users carl lisa nicesu ==&gt; 6</td>
-</tr>
-<tr>
-<td style="text-align:left">LPOP key</td>
-<td style="text-align:left">从列表左边移除一个元素，并返回该元素值</td>
-<td style="text-align:left">lpop users ==&gt; “fred”</td>
-</tr>
-<tr>
-<td style="text-align:left">RPOP key</td>
-<td style="text-align:left">从列表的右侧移除一个元素，并返回该元素值</td>
-<td style="text-align:left">rpop users ==&gt; “nicesu”</td>
-</tr>
-<tr>
-<td style="text-align:left">LLEN key</td>
-<td style="text-align:left">返回列表元素个数，键不存在时返回0</td>
-<td style="text-align:left">llen users ==&gt; 1</td>
-</tr>
-<tr>
-<td style="text-align:left">LRANGE key start stop</td>
-<td style="text-align:left">获取列表片段，start和stop支持负数，-1表示右数第一个</td>
-<td style="text-align:left">lrange users 0 -1 ==&gt; “sam” “alice” “carl” “lisa”</td>
-</tr>
-<tr>
-<td style="text-align:left">LREM key count value</td>
-<td style="text-align:left">删除列表中指定的值，返回删除的元素个数</td>
-<td style="text-align:left">lrem users 2 sam ==&gt; 1</td>
-</tr>
-<tr>
-<td style="text-align:left">LINDEX key index</td>
-<td style="text-align:left">获取指定索引元素值</td>
-<td style="text-align:left">lindex users 0 ==&gt; “carl”</td>
-</tr>
-<tr>
-<td style="text-align:left">LSET key index value</td>
-<td style="text-align:left">设置指定索引的元素值</td>
-<td style="text-align:left">lset users 0 allen ==&gt; OK</td>
-</tr>
-<tr>
-<td style="text-align:left">LTRIM key start end</td>
-<td style="text-align:left">只保留列表指定片段，删除其他元素</td>
-<td style="text-align:left">ltrim users 0 1 ==&gt; OK</td>
-</tr>
-<tr>
-<td style="text-align:left">LINSERT key BEFORE/AFTER pivot value</td>
-<td style="text-align:left">向列表插入元素,返回插入后列表长度</td>
-<td style="text-align:left">linsert users after carl adam ==&gt; 3</td>
-</tr>
-<tr>
-<td style="text-align:left">RPOPLPUSH source destination</td>
-<td style="text-align:left">将一个元素从一个列表转移到另一个列表，对source执行rpop，对destination执行lpush，返回被移动的元素值</td>
-<td style="text-align:left">rpoplpush users usernames ==&gt; “adam”</td>
-</tr>
-</tbody>
-</table>
-<h3 id="集合类型">集合类型</h3><p>集合中的每个元素都不同，且没有顺序</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">命令</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">SADD key member[ member..]</td>
-<td style="text-align:left">增加一个或多个元素</td>
-<td style="text-align:left">sadd tags one two three two ==&gt; 3</td>
-</tr>
-<tr>
-<td style="text-align:left">SREM key member[ member..]</td>
-<td style="text-align:left">移除一个或多个元素</td>
-<td style="text-align:left">srem tags two ==&gt; 1</td>
-</tr>
-<tr>
-<td style="text-align:left">SMEMBERS key</td>
-<td style="text-align:left">获取集合中所有的元素</td>
-<td style="text-align:left">smembers tags ==&gt; “three” “one”</td>
-</tr>
-<tr>
-<td style="text-align:left">SISMEMBER key member</td>
-<td style="text-align:left">判断元素是否存在集合中</td>
-<td style="text-align:left">sismember tags one ==&gt; 1</td>
-</tr>
-<tr>
-<td style="text-align:left">SCARD key</td>
-<td style="text-align:left">获取集合的元素个数</td>
-<td style="text-align:left">scard tags ==&gt; 2</td>
-</tr>
-<tr>
-<td style="text-align:left">SRANDMEMBER key[ count]</td>
-<td style="text-align:left">返回1个或count个随机元素</td>
-<td style="text-align:left">srandmember tags ==&gt; “one”</td>
-</tr>
-<tr>
-<td style="text-align:left">SDIFF key[ key..]</td>
-<td style="text-align:left">集合差运算</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">SINTER key[ key..]</td>
-<td style="text-align:left">集合交集运算</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">SUNION key[ key..]</td>
-<td style="text-align:left">集合并集运算</td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<h3 id="有序集合类型">有序集合类型</h3><p>在集合类型的基础上有序集合类型为每个元素都关联了一个分数，这使我们可以使用集合类型的操作之外，还能做与分数有关的操作。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">命令</th>
-<th style="text-align:left">描述</th>
-<th style="text-align:left">示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">ZADD key score member[ score member..]</td>
-<td style="text-align:left">增加一个带分数的元素，如果已存在，则替换分数</td>
-<td style="text-align:left">zadd scoreboard 60 fred 89 parker 76 tony 59 nicesu ==&gt; 4</td>
-</tr>
-<tr>
-<td style="text-align:left">ZSCORE key member</td>
-<td style="text-align:left">获得元素分数</td>
-<td style="text-align:left">ZSCORE scoreboard nicesu ==&gt; “59”</td>
-</tr>
-<tr>
-<td style="text-align:left">ZRANGE key start end[ WITHSCORES]</td>
-<td style="text-align:left">获得排名在某个范围内的元素，返回按score升序排序的元素</td>
-<td style="text-align:left">zrange scoreboard 0 -1 ==&gt; “nicesu” “fred” “tony” “parker”</td>
-</tr>
-<tr>
-<td style="text-align:left">ZREVRANGE key start end[ WITHSCORES]</td>
-<td style="text-align:left">与zrange使用一致，返回按score降序的元素</td>
-<td style="text-align:left">zrevrange scoreboard 0 -1 withscores ==&gt; “parker” “89” “tony” “76” “fred” “60” “nicesu” “59”</td>
-</tr>
-<tr>
-<td style="text-align:left">ZRANGEBYSCORE key min max[ WITHSCORES][LIMIT offset count]</td>
-<td style="text-align:left">获得指定分数范围内的元素</td>
-<td style="text-align:left">zrangebyscore scoreboard 60 100 ==&gt; “fred” “tony” “parker”</td>
-</tr>
-<tr>
-<td style="text-align:left">ZREVRANGEBYSCORE key max min[ WITHSCORES][LIMIT offset count]</td>
-<td style="text-align:left">获得指定分数范围内的元素,降序排序</td>
-<td style="text-align:left">zrevrangebyscore scoreboard 100 60 ==&gt; “parker” “tony” “fred”</td>
-</tr>
-<tr>
-<td style="text-align:left">ZINCREBY key increment member</td>
-<td style="text-align:left">增加某个元素的分数</td>
-<td style="text-align:left">zincrby scoreboard 1 nicesu ==&gt; 60</td>
-</tr>
-<tr>
-<td style="text-align:left">ZCARD key</td>
-<td style="text-align:left">获取集合中元素个数</td>
-<td style="text-align:left">zcard scoreboard ==&gt; 4</td>
-</tr>
-<tr>
-<td style="text-align:left">ZCOUNT KEY min max</td>
-<td style="text-align:left">获得指定分数范围内的元素个数</td>
-<td style="text-align:left">zcount scoreboard 80 100 ==&gt; 1</td>
-</tr>
-<tr>
-<td style="text-align:left">ZREM key member[ member..]</td>
-<td style="text-align:left">删除一个或多个元素</td>
-<td style="text-align:left">zrem scoreboard nicesu ==&gt; 1</td>
-</tr>
-<tr>
-<td style="text-align:left">ZRANK key member</td>
-<td style="text-align:left">获取分数从小到大排序的位置</td>
-<td style="text-align:left">zrank scoreboard parker ==&gt; 2</td>
-</tr>
-<tr>
-<td style="text-align:left">ZREVRANK key member</td>
-<td style="text-align:left">同上</td>
-<td style="text-align:left">zrevrank scoreboard parker ==&gt; 0</td>
-</tr>
-<tr>
-<td style="text-align:left">ZREMRANGEBYRANK key start stop</td>
-<td style="text-align:left">按照排名范围删除元素</td>
-<td style="text-align:left"></td>
-</tr>
-<tr>
-<td style="text-align:left">ZREMRANGEBYSCORE key min max</td>
-<td style="text-align:left">按分数范围内删除元素</td>
-<td style="text-align:left"></td>
-</tr>
-</tbody>
-</table>
-<h3 id="redis与node-js">redis与node.js</h3><h5 id="安装：">安装：</h5><p><code>npm install redis</code><br>还可以安装C语言写的redis库<br><code>npm install hiredis redis</code><br>如果安装了hiredis，node_redis会默认调用hiredis提供的库  </p>
-<h5 id="示例：">示例：</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> redis = <span class="keyword">require</span>(<span class="string">"redis"</span>),</span><br><span class="line"><span class="comment">// redis.createClient(port, host, option)</span></span><br><span class="line">   client = redis.createClient(<span class="number">6379</span>, <span class="string">'127.0.0.1'</span>, &#123;auth_pass: <span class="string">'password'</span>&#125;);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 如果需要切换数据库，如下操作</span></span><br><span class="line">   <span class="comment">// client.select(3, function() &#123; /* ... */ &#125;);</span></span><br><span class="line"></span><br><span class="line">   client.on(<span class="string">"error"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(err)</span> </span>&#123;</span><br><span class="line">       console.log(<span class="string">"Error "</span> + err);</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   client.set(<span class="string">"string key"</span>, <span class="string">"string val"</span>, redis.<span class="keyword">print</span>);</span><br><span class="line">   client.hset(<span class="string">"hash key"</span>, <span class="string">"hashtest 1"</span>, <span class="string">"some value"</span>, redis.<span class="keyword">print</span>);</span><br><span class="line">   client.hset([<span class="string">"hash key"</span>, <span class="string">"hashtest 2"</span>, <span class="string">"some other value"</span>], redis.<span class="keyword">print</span>);</span><br><span class="line">   client.hkeys(<span class="string">"hash key"</span>, <span class="function"><span class="keyword">function</span> <span class="params">(err, replies)</span> </span>&#123;</span><br><span class="line">       console.log(replies.length + <span class="string">" replies:"</span>);</span><br><span class="line">       replies.<span class="keyword">forEach</span>(<span class="function"><span class="keyword">function</span> <span class="params">(reply, i)</span> </span>&#123;</span><br><span class="line">           console.log(<span class="string">"    "</span> + i + <span class="string">": "</span> + reply);</span><br><span class="line">       &#125;);</span><br><span class="line">       client.quit();</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
-<p>像mset可以多参数的命令，参数可以使用数组的方式传：<br><code>client.mset(key1, val1, ... keyn, valn, [callback]);</code><br>等价于<br><code>client.mset([key1, val1, ... keyn, valn], [callback]);</code>  </p>
-<p>hmset可以接受多参数和对象<br><code>client.hmset(hashkey, key1, val1, ... keyn, valn, [callback])</code><br>等价于<br><code>client.hmset(hashkey, obj, [callback])</code>  </p>
-<p>更多命令使用请参考:  <a href="https://github.com/NodeRedis/node_redis" target="_blank" rel="external">https://github.com/NodeRedis/node_redis</a> 🐵</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
  </div>
 
         
 
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="chatapp_build_by_socket_io_and_express.html"
+                   data-title="socket.io+express多房间聊天应用" data-url="http://wuyanxin.com/chatapp_build_by_socket_io_and_express.html">
+              </div>
+            
+          </div>
         
       </div>
 
@@ -910,6 +287,15 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
       
 
       <section class="site-overview">
@@ -975,6 +361,17 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
 
       </section>
 
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#socket-io简介"><span class="nav-number">1.</span> <span class="nav-text">socket.io简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多房间聊天"><span class="nav-number">2.</span> <span class="nav-text">多房间聊天</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码_github"><span class="nav-number">3.</span> <span class="nav-text">代码 github</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#服务端代码"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">服务端代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#客户端代码"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">客户端代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#运行效果"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">运行效果</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#参考："><span class="nav-number">3.0.0.4.</span> <span class="nav-text">参考：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
       
 
     </div>
@@ -1062,6 +459,165 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
   <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
 
   <script type="text/javascript">
     $(document).ready(function () {
