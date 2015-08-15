@@ -1,5 +1,5 @@
-http://blog.wuyanxin.com/tags/index.html
-http://blog.wuyanxin.com/chatapp_build_by_socket_io_and_express.html
-http://blog.wuyanxin.com/node_imagemagick.html
-http://blog.wuyanxin.com/redis_study.html
-http://blog.wuyanxin.com/js_quick_sort.html
+http://wuyanxin.com/tags/index.html
+http://wuyanxin.com/chatapp_build_by_socket_io_and_express.html
+http://wuyanxin.com/node_imagemagick.html
+http://wuyanxin.com/redis_study.html
+http://wuyanxin.com/js_quick_sort.html
