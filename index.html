@@ -334,6 +334,100 @@
           
           
             
+              <a class="post-title-link" href="/null.html" itemprop="url">
+                WebStorm ES6 语法支持设置
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-10T10:42:36+08:00" content="2015-10-10">
+            2015-10-10
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/null.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="null.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><img src="http://upload-images.jianshu.io/upload_images/436630-aa16d5b424c9ca0c.jpg" alt=""></p>
+<p>ECMAScript 6是JavaScript语言的下一代标准，已经在2015年6月正式发布了。Mozilla公司将在这个标准的基础上，推出JavaScript 2.0。<br>ES6的目标，是使得JavaScript语言可以用来编写大型的复杂的应用程序，成为企业级开发语言。</p>
+<p>作为一只猴子，我也想尝试一下ES6有什么新特性，于是开始了学习之路。</p>
+<p>在webstorm写下了这段代码，体验一下ES6语法的便利，但是一大堆报错</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/436630-e162440fc4554a14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="各种语法错误"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/436630-012c26f0b9848e36.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="what the fuck"><br>相信每一只程序猴都不想在这样的环境下编码，反正本猴不想</p>
+<h3 id="1_语法支持设置">1 语法支持设置</h3><blockquote>
+<p>Preferences &gt; Languages &amp; Frameworks &gt; JavaScript</p>
+</blockquote>
+<p>这里只要配置ECMAScript版本即可<br><img src="http://upload-images.jianshu.io/upload_images/436630-0fac0723fbae8d81.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>配置之后<br><img src="http://upload-images.jianshu.io/upload_images/436630-8b818c36eccdeee3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="2_自动转码为ES5">2 自动转码为ES5</h3><blockquote>
+<p>file watcher + <a href="http://babeljs.io/" target="_blank" rel="external">babel</a>（ES6转码器）</p>
+</blockquote>
+<p>你可能希望你写的代码有更好的兼容性，但目前的ES6肯定不是所有浏览器都支持的，所以我们要用到ES6转码器。<br><a href="https://babeljs.io/" target="_blank" rel="external">Babel</a>是一个广泛使用的ES6转码器，可以将ES6代码转为ES5代码，从而在浏览器或其他环境执行。这意味着，你可以用ES6的方式编写程序，又不用担心现有环境是否支持。</p>
+<p>而且你还希望每次修改代码时能自动转码，所以还要用到webstorm的file watcher（当然还有其他解决方案）</p>
+<ul>
+<li><code>npm install -g babel</code></li>
+<li>Preferences &gt; Tools &gt; File watchers</li>
+<li>点击“+”按钮</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/436630-187656ec1bf208c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="file watcher配置界面"></p>
+<blockquote>
+<p>File Type：配置该监听器监听的文件类型，可以在<em>Preferences &gt; Editor &gt; File types</em>中配置<br>Scope：配置该监听器的监听范围，可自定义新的范围，也可以使用<em>Preferences &gt; Appearance &amp; Behavior &gt; Scopes</em>中定义的范围<br>Program：babel的安装位置<br>Arguments：命令执行参数，参见<a href="https://babeljs.io/docs/usage/cli/" target="_blank" rel="external">Babel CLI</a><br>Working directory：babel命令执行的位置，默认为文件所在目录</p>
+</blockquote>
+<p>这样对文件做修改会随时生成编译成ES5的文件以及sourceMap文件<br><img src="http://upload-images.jianshu.io/upload_images/436630-47eaa39a30789dfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="编译后"></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/chatapp_build_by_socket_io_and_express.html" itemprop="url">
                 socket.io+express多房间聊天应用
               </a>
@@ -1085,7 +1179,7 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1099,7 +1193,7 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
