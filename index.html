@@ -173,6 +173,167 @@
           
           
             
+              <a class="post-title-link" href="/try_nodejs_on_jenkins.html" itemprop="url">
+                Jenkins+Node.js持续集成
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-19T10:31:36+08:00" content="2015-10-19">
+            2015-10-19
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/node-js/" itemprop="url" rel="index">
+                  <span itemprop="name">node.js</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/node-js/jenkins/" itemprop="url" rel="index">
+                  <span itemprop="name">jenkins</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/try_nodejs_on_jenkins.html#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="try_nodejs_on_jenkins.html" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p><img src="http://upload-images.jianshu.io/upload_images/436630-980297d7de13473d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="什么是持续集成(Continuous_integration)">什么是持续集成(<a href="http://www.martinfowler.com/articles/continuousIntegration.html" target="_blank" rel="external">Continuous integration</a>)</h3><blockquote>
+<p>提出者Martin Fowler本人对持续集成是这样定义的:持续集成是一种软件开发实践，即团队开发成员经常集成他们的工作，通常每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试)来验证，从而尽快地发现集成错误。许多团队发现这个过程可以大大减少集成的问题，让团队能够更快的开发内聚的软件。</p>
+</blockquote>
+<p>随着软件开发复杂度的不断提高，团队开发成员间如何更好地协同工作以确保软件开发的质量已经慢慢成为开发过程中不可回避的问题。尤其是敏捷开发（Agile） 在软件工程领域越来越红火，如何能再不断变化的需求中快速适应和保证软件的质量也显得尤其的重要。<br>持续集成正是针对这一类问题的一种软件开发实践。</p>
+<h5 id="持续集成的核心价值在于：">持续集成的核心价值在于：</h5><ol>
+<li>减少风险，减少重复过程</li>
+<li>任何时间、任何地点生成可部署的软件</li>
+<li>增强项目的可见性</li>
+<li>建立团队对开发产品的信心</li>
+</ol>
+<h5 id="持续集成的原则">持续集成的原则</h5><ol>
+<li>所有的开发人员需要在本地机器上做本地构建，然后再提交的版本控制库中，从而确保他们的变更不会导致持续集成失败。</li>
+<li>开发人员每天至少向版本控制库中提交一次代码。</li>
+<li>开发人员每天至少需要从版本控制库中更新一次代码到本地机器。</li>
+<li>需要有专门的集成服务器来执行集成构建,每天要执行多次构建。</li>
+<li>每次构建都要100%通过。</li>
+<li>每次构建都可以生成可发布的产品。</li>
+<li>修复失败的构建是优先级最高的事情。</li>
+<li>测试是未来，未来是测试</li>
+</ol>
+<h3 id="Jenkins">Jenkins</h3><blockquote>
+<p>Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统，使开发者从繁杂的集成中解脱出来，专注于更为重要的业务逻辑实现上。同时 Jenkins 能实施监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。</p>
+</blockquote>
+<h5 id="安装">安装</h5><p>从<a href="http://jenkins-ci.org/" target="_blank" rel="external">Jenkins官网</a>下载最新<a href="http://mirrors.jenkins-ci.org/war/latest/jenkins.war" target="_blank" rel="external">war文件</a></p>
+<blockquote>
+<p>运行 java -jar jenkins.war</p>
+</blockquote>
+<p>运行成功会在用户个人目录下新建.jenkins/文件夹<br>访问localhost:8080就能到达Jenkins首页</p>
+<h5 id="系统配置">系统配置</h5><h6 id="邮件配置">邮件配置</h6><blockquote>
+<p>系统管理 &gt;&gt; 系统设置 </p>
+</blockquote>
+<p>这里以<a href="http://service.mail.qq.com/cgi-bin/help?subtype=1&amp;&amp;id=28&amp;&amp;no=331" target="_blank" rel="external">QQ邮箱配置</a>为例，根据自己的邮件提供商修改<br><img src="http://upload-images.jianshu.io/upload_images/436630-78913887d94d388a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置有效URL和发送邮箱"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/436630-b364c2acb879da40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="注意SMTP服务器是系统管理员邮件提供商的服务器"></p>
+<h6 id="安装Git插件">安装Git插件</h6><blockquote>
+<p>系统管理 &gt;&gt; 插件管理 &gt;&gt; 可选插件</p>
+</blockquote>
+<p>查找Git plugin，勾选，直接安装，重启Jenkins</p>
+<p>Jenkins提供了很多优秀的插件，这里有一篇不错的<a href="http://qa.blog.163.com/blog/static/190147002201391661510655/" target="_blank" rel="external">介绍Jenkins Job相关插件的文章</a><br>如果你觉得已有的插件不能满足你的需求，可以自己开发（推荐：<a href="http://www.ibm.com/developerworks/cn/java/j-lo-jenkins-plugin/" target="_blank" rel="external">浅析Jenkins插件开发</a>）</p>
+<h5 id="用户与安全">用户与安全</h5><blockquote>
+<p>系统管理 &gt;&gt; 管理用户  </p>
+</blockquote>
+<p>可添加和管理用户</p>
+<blockquote>
+<p>系统管理 &gt;&gt; Configure Global Security(安全设置) </p>
+</blockquote>
+<p>可配合安全矩阵管理用户权限</p>
+<h3 id="DEMO">DEMO</h3><ol>
+<li><p>新建一个freestyle项目<br><img src="http://upload-images.jianshu.io/upload_images/436630-3cfd98310e077484.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>配置源码，这里以git为例，Credential可以配置帐号密码、ssh<br><a href="https://github.com/wuyanxin/jenkins_nodejs_test" target="_blank" rel="external">https://github.com/wuyanxin/jenkins_nodejs_test</a> 是一份简单示例代码，包含启动失败、启动成功、测试失败、和测试成功的例子<br><img src="http://upload-images.jianshu.io/upload_images/436630-3f42839992a1a840.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>构建触发器<br>我选择的是定时器模式，配置语法如crontab，可点击右侧的问号查看说明。<br>顺便说说触发远程构建，可以通过远程请求对应URL触发，这个可以配合版本库的hook使用，自动化测试新commit<br><img src="http://upload-images.jianshu.io/upload_images/436630-7687ef8e9ea6e4a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>构建<br>可通过四种方式构建，batch、shell、ant、maven，根据自己需要自行选择。<br>我用shell, 可以增加多步构建，按顺序执行<br><img src="http://upload-images.jianshu.io/upload_images/436630-9c9d2f120b8b1e0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/436630-542f8803b89aa1ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>构建之后<br>可打包、构建其他项目、发布测试报告、发布javadoc、git发布、邮件提醒<br>这里就只谈谈邮件提醒<br><img src="http://upload-images.jianshu.io/upload_images/436630-fa9607ccdbcc1bd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/436630-4f55ecc0bacb06a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="邮件提醒"></p>
+<blockquote>
+<p>这样我们就完成了持续集成环境的搭建，启动失败或者测试失败将会发送邮件通知。</p>
+</blockquote>
+</li>
+<li><p>Jenkins面板还提供了构建晴雨表，表示最近5次构建的成功情况，按照下图5种晴雨表图标分别表示最近5个成功、4个成功，3个成功，1或2个成功，全部失败<br><img src="http://upload-images.jianshu.io/upload_images/436630-fb1d111c4f1802d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="构建晴雨表"></p>
+</li>
+</ol>
+<p>未完待续…</p>
+<h4 id="参考">参考</h4><p><a href="http://www.baidu.com/link?url=9mixigbSigIs3fV1i62iXlDVfd3DUCDmBs67NT0pq8jmnlAVPPMHR5knTb4_LRHOombfT8wrd28FLeUGJ36RzK&amp;wd=&amp;eqid=82a3f9d40002964400000005561fb823" target="_blank" rel="external">Jenkins_百度百科</a><br><a href="http://www.ibm.com/developerworks/cn/java/j-lo-jenkins/" target="_blank" rel="external">http://www.ibm.com/developerworks/cn/java/j-lo-jenkins/</a></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/chatapp_build_by_socket_io_and_express.html" itemprop="url">
                 socket.io+express多房间聊天应用
               </a>
@@ -924,21 +1085,21 @@ yum <span class="keyword">install</span> libtool-ltdl-devel.x86_64
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">分类</span>
               
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

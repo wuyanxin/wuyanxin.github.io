@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wuyanxin.com/try_nodejs_on_jenkins.html</loc>
+    <lastmod>2015-10-19T02:36:54.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wuyanxin.com/chatapp_build_by_socket_io_and_express.html</loc>
     <lastmod>2015-08-14T10:31:49.000Z</lastmod>
   </url>
